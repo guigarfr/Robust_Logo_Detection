@@ -13,10 +13,10 @@ lr_config = dict(
     warmup='linear',
     warmup_iters=500,
     warmup_ratio=0.001,
-    step=[8,12,16])
+    step=[8, 12, 16])
 
 # Set max epochs to 18
 runner = dict(type='EpochBasedRunner', max_epochs=18)
 
-work_dir = '/apdcephfs/share_1290939/jiaxiaojun/OpenBrandData/outputEnd_detectors_r50'
-load_from="/apdcephfs/share_1290939/jiaxiaojun/OpenBrandData/output_detectors_ratio-multinode/epoch_14.pth"
+work_dir = "/home/ubuntu/logos_dataset/outputEnd_detectors_r50"
+load_from = "/home/ubuntu/epoch_21.pth"

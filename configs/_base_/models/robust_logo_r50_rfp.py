@@ -1,7 +1,7 @@
 model = dict(
     type='CascadeRCNN',
-    # 须提前下载预训练检查点，上传服务器
-    pretrained='/apdcephfs/share_1290939/jiaxiaojun/Open_brand/checkpoints/resnet50-19c8e357.pth',
+    # The pre-training checkpoint must be downloaded in advance and uploaded to the server
+    pretrained='/home/ubuntu/epoch_21.pth',
     backbone=dict(
         type='DetectoRS_ResNet',
         depth=50,       # resnet 50
