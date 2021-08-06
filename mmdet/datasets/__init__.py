@@ -12,7 +12,7 @@ from .voc import VOCDataset
 from .wider_face import WIDERFaceDataset
 from .xml_style import XMLDataset
 from .openBrand import OpenBrandDataset
-from .redpoints import LogosDataset
+from .logos_dataset import LogosDataset
 
 __all__ = [
     'CustomDataset', 'XMLDataset', 'CocoDataset', 'DeepFashionDataset',
