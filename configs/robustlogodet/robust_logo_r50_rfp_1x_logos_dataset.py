@@ -20,3 +20,5 @@ runner = dict(type='EpochBasedRunner', max_epochs=18)
 
 work_dir = "/home/ubuntu/logos_dataset/outputEnd_detectors_r50"
 load_from = "/home/ubuntu/epoch_21.pth"
+data_root = '/home/ubuntu/data/logo_dataset/'
+
