@@ -7,6 +7,7 @@ from mmcv import Config, DictAction
 
 from mmdet.core.utils import mask2ndarray
 from mmdet.core.visualization import imshow_det_bboxes
+from mmdet.datasets import LogosDataset  # noqa: import to register
 from mmdet.datasets.builder import build_dataset
 
 
