@@ -37,7 +37,7 @@ model = dict(
             sac=dict(type='SAC', use_deform=True),
             stage_with_sac=(False, True, True, True),
             # resnet-50 imagenet预训练模型
-            pretrained='/apdcephfs/share_1290939/jiaxiaojun/Open_brand/checkpoints/resnet50-19c8e357.pth',
+            pretrained='/home/ubuntu/epoch_21.pth',
             style='pytorch')),
     rpn_head=dict(
         type='RPNHead',
