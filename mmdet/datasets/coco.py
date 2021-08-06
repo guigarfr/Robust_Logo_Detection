@@ -16,7 +16,7 @@ from .custom import CustomDataset
 
 try:
     import pycocotools
-    assert pycocotools.__version__ >= '12.0.2'
+    assert pycocotools.__version__ >= '2.0.2'
 except AssertionError:
     raise AssertionError('Incompatible version of pycocotools is installed. '
                          'Run pip uninstall pycocotools first. Then run pip '
