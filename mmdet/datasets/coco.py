@@ -2,6 +2,7 @@ import itertools
 import logging
 import os.path as osp
 import tempfile
+from packaging import version
 
 import mmcv
 import numpy as np
@@ -16,7 +17,7 @@ from .custom import CustomDataset
 
 try:
     import pycocotools
-    assert pycocotools.__version__ >= '2.0.2'
+    assert version.parse(pycocotools.__version__) >= version.parse("2.0.2")
 except AssertionError:
     raise AssertionError('Incompatible version of pycocotools is installed. '
                          'Run pip uninstall pycocotools first. Then run pip '
