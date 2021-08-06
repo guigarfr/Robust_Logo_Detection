@@ -1,10 +1,9 @@
 from mmdet.apis import init_detector, inference_detector
-import mmcv
 import os
 
 
 def main():
-    config_file= 'detect_config.py'
+    config_file= 'configs/robustlogodet/robust_logo_r50_rfp_1x_openbrand.py.py'
     checkpoint_file='/apdcephfs/share_1290939/jiaxiaojun/OpenBrandData/outputEnd_detectors_r50/epoch_21.pth'
     #checkpoint_file='/apdcephfs/share_1290939/jiaxiaojun/ICCV2021Challenges/Detection/output/detectors-trainval-r50-c10-raw/epoch_37.pth'
     #checkpoint_file = '/apdcephfs/share_1290939/jiaxiaojun/ICCV2021Challenges/Detection/output/detectors-trainval-r50-c10-raw/epoch_37.pth'

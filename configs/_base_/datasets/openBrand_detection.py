@@ -38,17 +38,34 @@ albu_train_transforms = [
     dict(
         type='OneOf',
         transforms=[
+            dict(type='MotionBlur', p=1.0),
             dict(type='Blur', blur_limit=3, p=1.0),
             dict(type='MedianBlur', blur_limit=3, p=1.0)
         ],
         p=0.1),
+    # Add natural interference
+    dict(
+        type='OneOf',
+        transforms=[
+            dict(type='RandomFog', fog_coef_lower=0.7, fog_coef_upper=0.8, alpha_coef=0.1, p=1.0),
+            dict(type='RandomRain', brightness_coefficient=0.9, drop_width=1, blur_value=5, p=1.0)
+        ],
+        p=0.1),
+    # Add gaussian noise
+    dict(
+        type='OneOf',
+        transforms=[
+            dict(type='IAAAdditiveGaussianNoise'),
+            dict(type='GaussNoise')
+        ],
+        p=0.1)
 ]
 
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations', with_bbox=True),
-    #dict(type='Resize', img_scale=[(1333,800), (1333,880), (1333,960), (1333,1024), (1333,1100)], keep_ratio=True,multiscale_mode='value'),
-    dict(type='Resize', img_scale=[(1333,800), (1333,896), (1333,1024)], keep_ratio=True,multiscale_mode='value'),
+    dict(type='Resize', img_scale=[(1333,800), (1333,880), (1333,960), (1333,1024), (1333,1100)], keep_ratio=True,multiscale_mode='value'),
+    # dict(type='Resize', img_scale=[(1333,800), (1333,896), (1333,1024)], keep_ratio=True,multiscale_mode='value'),
     dict(type='Pad', size_divisor=32),
     #dict(type='Resize', img_scale=(1333, 800), keep_ratio=True),
     dict(
@@ -75,9 +92,9 @@ test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='MultiScaleFlipAug',
-        img_scale=(1333, 896),
-        #img_scale=[(1333,800), (1333,880), (1333,960), (1333,1024), (1333,1100)],
-        flip=False,
+        img_scale=[(1333, 800), (1333, 864), (1333, 928), (1333,992),
+                  (1333, 1056), (1333,1120), (1333,1184),(1333,1248)],
+        flip=True,
         transforms=[
             dict(type='Resize', keep_ratio=True),
             dict(type='RandomFlip'),
@@ -91,10 +108,15 @@ data = dict(
     samples_per_gpu=4,
     workers_per_gpu=2,
     train=dict(
-        type=dataset_type,
-        ann_file=data_root + 'annotations/openbrand_train.json',
-        img_prefix=data_root + 'train-images/',
-        pipeline=train_pipeline),
+        type='ClassBalancedDataset',
+        oversample_thr=0.002,    # resampling
+        dataset=dict(
+            type=dataset_type,
+            ann_file=data_root + 'annotations/openbrand_train.json',
+            img_prefix=data_root + 'train-images/',
+            pipeline=train_pipeline,
+        )
+    ),
     val=dict(
         type=dataset_type,
         ann_file=data_root + 'annotations/instances_brand_val_hybrid2.json',
