@@ -36,20 +36,20 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        ann_file='/Users/ggarcia/Development/datascience-common/logo_recog/custom/data/logo_dataset/ImageSets/Main/train.txt',
-        img_prefix='/Users/ggarcia/Development/datascience-common/logo_recog/custom/data/logo_dataset/',
+        ann_file='ImageSets/Main/train.txt',
+        img_prefix='',
         pipeline=train_pipeline,
     ),
     val=dict(
         type=dataset_type,
-        ann_file='/Users/ggarcia/Development/datascience-common/logo_recog/custom/data/logo_dataset/ImageSets/Main/validation.txt',
-        img_prefix='/Users/ggarcia/Development/datascience-common/logo_recog/custom/data/logo_dataset/',
+        ann_file='ImageSets/Main/validation.txt',
+        img_prefix='',
         pipeline=test_pipeline,
     ),
     test=dict(
         type=dataset_type,
-        ann_file='/Users/ggarcia/Development/datascience-common/logo_recog/custom/data/logo_dataset/ImageSets/Main/test.txt',
-        img_prefix='/Users/ggarcia/Development/datascience-common/logo_recog/custom/data/logo_dataset/',
+        ann_file='ImageSets/Main/test.txt',
+        img_prefix='',
         pipeline=test_pipeline,
     ),
 )
