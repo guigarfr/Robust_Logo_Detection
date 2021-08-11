@@ -7,7 +7,7 @@ model = dict(
         depth=50,       # resnet 50
         num_stages=4,
         out_indices=(0, 1, 2, 3),
-        frozen_stages=1,
+        frozen_stages=4,
         norm_cfg=dict(type='SyncBN', requires_grad=True),
         norm_eval=True,
         style='pytorch',
@@ -30,7 +30,7 @@ model = dict(
             depth=50,
             num_stages=4,
             out_indices=(0, 1, 2, 3),
-            frozen_stages=1,
+            frozen_stages=4,
             norm_cfg=dict(type='SyncBN', requires_grad=True),
             norm_eval=True,
             conv_cfg=dict(type='ConvAWS'),
