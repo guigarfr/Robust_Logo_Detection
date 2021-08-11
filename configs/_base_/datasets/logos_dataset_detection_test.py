@@ -2,6 +2,9 @@ _base_ = [
     '../_base_/datasets/logos_dataset_detection.py'
 ]
 
+dataset_type = 'LogosDataset'
+data_root = 'data/logo_dataset/'
+
 data = dict(
     samples_per_gpu=2,
     workers_per_gpu=2,
