@@ -1,5 +1,6 @@
 import os.path as osp
 
+import numpy as np
 import mmcv
 
 from . import XMLDataset
@@ -56,3 +57,41 @@ class LogosDataset(XMLDataset):
 
         return data_infos
 
+    def evaluate(self,
+                 results,
+                 metric='bbox',
+                 logger=None,
+                 jsonfile_prefix=None,
+                 classwise=False,
+                 proposal_nums=(100, 300, 1000),
+                 iou_thrs=np.arange(0.5, 0.96, 0.05)):
+        """Evaluation in COCO protocol.
+
+        Args:
+            results (list[list | tuple]): Testing results of the dataset.
+            metric (str | list[str]): Metrics to be evaluated. Options are
+                'bbox', 'segm', 'proposal', 'proposal_fast'.
+            logger (logging.Logger | str | None): Logger used for printing
+                related information during evaluation. Default: None.
+            jsonfile_prefix (str | None): The prefix of json files. It includes
+                the file path and the prefix of filename, e.g., "a/b/prefix".
+                If not specified, a temp file will be created. Default: None.
+            classwise (bool): Whether to evaluating the AP for each class.
+            proposal_nums (Sequence[int]): Proposal number used for evaluating
+                recalls, such as recall@100, recall@1000.
+                Default: (100, 300, 1000).
+            iou_thrs (Sequence[float]): IoU threshold used for evaluating
+                recalls/mAPs. If set to a list, the average of all IoUs will
+                also be computed. Default: np.arange(0.5, 0.96, 0.05).
+
+        Returns:
+            dict[str, float]: COCO style evaluation metric.
+        """
+
+        metrics = metric if isinstance(metric, list) else [metric]
+        allowed_metrics = ['bbox', 'segm', 'proposal', 'proposal_fast']
+        for metric in metrics:
+            if metric not in allowed_metrics:
+                raise KeyError(f'metric {metric} is not supported')
+
+        return dict()
