@@ -1,0 +1,3 @@
+#/bin/bash
+
+PYTHONPATH=Robust_Logo_Detection/ python3 Robust_Logo_Detection/demo/inference_test_images.py Robust_Logo_Detection/configs/robustlogodet/robust_logo_r50_rfp_1x_logos_dataset.py /home/ubuntu/logos_dataset/outputEnd_detectors_r50/latest.pth

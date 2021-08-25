@@ -1,6 +1,6 @@
 _base_ = [
-    '../_base_/models/robust_logo_r50_rfp.py',
-    '../_base_/datasets/logos_dataset_detection_micro.py',
+    '../_base_/models/robust_logo_r50_rfp__no_cls.py',
+    '../_base_/datasets/logos_dataset_detection_nc.py',
     '../_base_/schedules/schedule_1x.py', '../_base_/default_runtime.py'
 ]
 
@@ -18,7 +18,6 @@ lr_config = dict(
 # Set max epochs to 18
 runner = dict(type='EpochBasedRunner', max_epochs=18)
 
-work_dir = "/home/ubuntu/logos_dataset/temp_micro"
+work_dir = "/home/ubuntu/logos_dataset/checkpoints_rp_no_class"
 load_from = "/home/ubuntu/epoch_21.pth"
 data_root = '/home/ubuntu/data/logo_dataset/'
-

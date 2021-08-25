@@ -1,4 +1,4 @@
-dataset_type = 'LogosDataset'
+dataset_type = 'LogosDatasetNoCLS'
 data_root = 'data/logo_dataset/'
 
 

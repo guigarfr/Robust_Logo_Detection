@@ -13,6 +13,7 @@ from .wider_face import WIDERFaceDataset
 from .xml_style import XMLDataset
 from .openBrand import OpenBrandDataset
 from .logos_dataset import LogosDataset
+from .logos_dataset__no_cls import LogosDatasetNoCLS
 
 __all__ = [
     'CustomDataset', 'XMLDataset', 'CocoDataset', 'DeepFashionDataset',
@@ -21,5 +22,5 @@ __all__ = [
     'DistributedSampler', 'build_dataloader', 'ConcatDataset', 'RepeatDataset',
     'ClassBalancedDataset', 'WIDERFaceDataset', 'DATASETS', 'PIPELINES',
     'build_dataset', 'replace_ImageToTensor', 'OpenBrandDataset',
-    'LogosDataset',
+    'LogosDataset', 'LogosDatasetNoCLS'
 ]

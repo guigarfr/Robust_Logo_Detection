@@ -11,3 +11,4 @@ data = dict(
         ann_file='ImageSets/Main/test.txt.bak.txt',
     ),
 )
+evaluation = dict(interval=1, metric='mAP')

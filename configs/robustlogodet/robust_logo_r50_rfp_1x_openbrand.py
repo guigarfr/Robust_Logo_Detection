@@ -5,7 +5,7 @@ _base_ = [
 ]
 
 # Modify grad clip
-optimizer_config = dict(grad_clip=dict(max_norm=5, norm_type=2))
+optimizer_config = dict(_delete_=True, grad_clip=dict(max_norm=5, norm_type=2))
 
 # Change learning policy step
 lr_config = dict(
